@@ -8,14 +8,14 @@ const PersonEvents = ({ personName, onEventSelect, onBackToHome }) => {
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   useEffect(() => {
     const fetchPersonEvents = async () => {
       if (!personName) return;
-      
+
       setIsLoading(true);
       setError(null);
-      
+
       try {
         const eventData = await getPersonEvents(personName);
         setEvents(eventData);
@@ -29,7 +29,7 @@ const PersonEvents = ({ personName, onEventSelect, onBackToHome }) => {
 
     fetchPersonEvents();
   }, [personName]);
-  
+
   const formatPersonName = (name) => {
     return name.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   };
@@ -40,32 +40,32 @@ const PersonEvents = ({ personName, onEventSelect, onBackToHome }) => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-        <div className="bg-white border-b border-slate-200 shadow-sm">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+        <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-sm">
           <div className="max-w-4xl mx-auto px-6 py-6">
             <div className="flex items-center gap-4">
               <Button
                 onClick={onBackToHome}
                 variant="outline"
                 size="sm"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Search
               </Button>
               <div>
-                <h1 className="text-3xl font-bold text-slate-800">
+                <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100">
                   {formatPersonName(personName)}
                 </h1>
-                <p className="text-slate-600">Loading events...</p>
+                <p className="text-slate-600 dark:text-slate-400">Loading events...</p>
               </div>
             </div>
           </div>
         </div>
         <div className="flex justify-center items-center py-16">
           <div className="text-center">
-            <Loader2 className="w-12 h-12 text-slate-400 mx-auto animate-spin mb-4" />
-            <p className="text-slate-600 text-lg">Loading events for {formatPersonName(personName)}...</p>
+            <Loader2 className="w-12 h-12 text-indigo-500 mx-auto animate-spin mb-4" />
+            <p className="text-slate-600 dark:text-slate-400 text-lg">Loading events for {formatPersonName(personName)}...</p>
           </div>
         </div>
       </div>
@@ -74,21 +74,21 @@ const PersonEvents = ({ personName, onEventSelect, onBackToHome }) => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-        <div className="bg-white border-b border-slate-200 shadow-sm">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+        <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-sm">
           <div className="max-w-4xl mx-auto px-6 py-6">
             <div className="flex items-center gap-4">
               <Button
                 onClick={onBackToHome}
                 variant="outline"
                 size="sm"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Search
               </Button>
               <div>
-                <h1 className="text-3xl font-bold text-slate-800">
+                <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100">
                   {formatPersonName(personName)}
                 </h1>
               </div>
@@ -96,12 +96,12 @@ const PersonEvents = ({ personName, onEventSelect, onBackToHome }) => {
           </div>
         </div>
         <div className="max-w-4xl mx-auto px-6 py-8">
-          <Card className="border border-red-200 bg-red-50">
+          <Card className="border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/30">
             <CardContent className="p-8 text-center">
               <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-              <h2 className="text-xl font-semibold text-red-800 mb-2">Error Loading Events</h2>
-              <p className="text-red-600 mb-4">{error}</p>
-              <Button onClick={() => window.location.reload()} variant="outline">
+              <h2 className="text-xl font-semibold text-red-800 dark:text-red-400 mb-2">Error Loading Events</h2>
+              <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>
+              <Button onClick={() => window.location.reload()} variant="outline" className="dark:border-slate-600 dark:text-slate-300">
                 Try Again
               </Button>
             </CardContent>
@@ -112,25 +112,25 @@ const PersonEvents = ({ personName, onEventSelect, onBackToHome }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 shadow-sm">
+      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-sm">
         <div className="max-w-4xl mx-auto px-6 py-6">
           <div className="flex items-center gap-4">
             <Button
               onClick={onBackToHome}
               variant="outline"
               size="sm"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Search
             </Button>
             <div>
-              <h1 className="text-3xl font-bold text-slate-800">
+              <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100">
                 {formatPersonName(personName)}
               </h1>
-              <p className="text-slate-600">
+              <p className="text-slate-600 dark:text-slate-400">
                 Found in {events.length} event{events.length !== 1 ? 's' : ''}
               </p>
             </div>
@@ -143,48 +143,48 @@ const PersonEvents = ({ personName, onEventSelect, onBackToHome }) => {
         {events.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {events.map((event, index) => (
-              <Card 
-                key={event.eventName} 
-                className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-0 bg-white"
+              <Card
+                key={event.eventName}
+                className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-0 bg-white dark:bg-slate-800 dark:border dark:border-slate-700"
                 onClick={() => onEventSelect(event.eventName, personName)}
               >
                 <CardHeader className="pb-4">
                   <CardTitle className="flex items-center gap-3">
-                    <Calendar className="w-5 h-5 text-slate-600" />
-                    <span className="text-lg font-semibold text-slate-800">
+                    <Calendar className="w-5 h-5 text-indigo-500" />
+                    <span className="text-lg font-semibold text-slate-800 dark:text-slate-100">
                       {formatEventName(event.eventName)}
                     </span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-slate-600">
+                    <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
                       <Images className="w-4 h-4" />
                       <span className="text-sm">
                         {event.photoCount} photo{event.photoCount !== 1 ? 's' : ''}
                       </span>
                     </div>
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       size="sm"
-                      className="bg-slate-50 hover:bg-slate-100 border-slate-200"
+                      className="bg-slate-50 hover:bg-slate-100 border-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:border-slate-600 dark:text-slate-200"
                     >
                       View Photos
                     </Button>
                   </div>
-                  
+
                   {/* Preview thumbnails */}
                   <div className="mt-4 flex gap-1 overflow-hidden rounded-lg">
                     {event.photos.slice(0, 3).map((photo, photoIndex) => {
                       const fileId = photo.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)?.[1];
                       const thumbnailUrl = fileId ? `https://lh3.googleusercontent.com/d/${fileId}=w200-h200-c` : photo;
-                      
+
                       return (
-                        <div 
+                        <div
                           key={photoIndex}
-                          className="flex-1 h-16 bg-gradient-to-br from-slate-200 to-slate-300 rounded relative overflow-hidden"
+                          className="flex-1 h-16 bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 rounded relative overflow-hidden"
                         >
-                          <img 
+                          <img
                             src={thumbnailUrl}
                             alt={`Preview ${photoIndex + 1}`}
                             className="w-full h-full object-cover"
@@ -199,14 +199,14 @@ const PersonEvents = ({ personName, onEventSelect, onBackToHome }) => {
                               }
                             }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 items-center justify-center hidden">
-                            <Images className="w-4 h-4 text-slate-500" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 items-center justify-center hidden">
+                            <Images className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                           </div>
                         </div>
                       );
                     })}
                     {event.photoCount > 3 && (
-                      <div className="flex-1 h-16 bg-slate-800 rounded flex items-center justify-center">
+                      <div className="flex-1 h-16 bg-slate-800 dark:bg-indigo-600 rounded flex items-center justify-center">
                         <span className="text-white text-xs font-medium">
                           +{event.photoCount - 3}
                         </span>
@@ -219,13 +219,13 @@ const PersonEvents = ({ personName, onEventSelect, onBackToHome }) => {
           </div>
         ) : (
           <div className="text-center py-16">
-            <div className="text-slate-300 mb-4">
+            <div className="text-slate-300 dark:text-slate-600 mb-4">
               <Calendar className="w-16 h-16 mx-auto" />
             </div>
-            <h2 className="text-2xl font-semibold text-slate-600 mb-2">
+            <h2 className="text-2xl font-semibold text-slate-600 dark:text-slate-400 mb-2">
               No Events Found
             </h2>
-            <p className="text-slate-500">
+            <p className="text-slate-500 dark:text-slate-500">
               {formatPersonName(personName)} doesn't appear in any events yet.
             </p>
           </div>
