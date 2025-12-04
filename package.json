@@ -1,0 +1,14 @@
+{
+  "name": "photo-gallery-platform",
+  "version": "1.0.0",
+  "description": "Photo Gallery Platform with Google Drive Integration",
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "dev": "cd frontend && npm start",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  }
+}
